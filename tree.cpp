@@ -39,6 +39,78 @@ void postOrder(nodeptr p){
     postOrder(p->right);
      cout<<p->data<<" ";
 }
+void preOrderAl(nodeptr ptr){
+    stack<nodeptr> st;
+    st.push(NULL);
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        if(ptr->right!=NULL){
+            st.push(ptr->right);
+        }
+        if(ptr->left!=NULL){
+            ptr=ptr->left;
+        }
+        else {
+            ptr=st.top();
+            st.pop();
+        }
+    }
+}
+void inOderAl(nodeptr ptr){
+    stack<nodeptr> st;
+    st.push(NULL);
+    XXX:
+    while(ptr!=NULL){
+        st.push(ptr);
+        ptr=ptr->left;
+    }
+    ptr=st.top();
+    st.pop();
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        if(ptr->right!=NULL){
+            ptr=ptr->right;
+            goto XXX;
+        }
+        ptr=st.top();
+        st.pop();
+    }
+}
+void postOrderAl(nodeptr ptr){
+    stack<nodeptr>st;
+    stack<bool> bo;
+    st.push(NULL);
+    bo.push(false);
+    XXX:
+    while(ptr!=NULL){
+        st.push(ptr);
+        bo.push(false);
+        if(ptr->right!=NULL){
+            st.push(ptr->right);
+            bo.push(true);
+        }
+        ptr=ptr->left;
+    }
+    ptr=st.top();
+    st.pop();
+    bool x=bo.top();
+    bo.pop();
+    while(x!=true){
+        cout<<ptr->data<<" ";
+        if(!st.empty()){
+         ptr= st.top();
+         st.pop();
+         x=bo.top();
+         bo.pop(); 
+        }
+        else{
+            return;
+            }
+    }
+     if(x==true){
+            goto XXX;
+        }
+}
 void insert(){
     root=getNode();
    nodeptr ptr=root;
@@ -82,4 +154,24 @@ inOrder(root);
 cout<<"\n";
 postOrder(root);
 
+cout<<"\n\n";
+preOrderAl(root);
+cout<<"\n\n";
+inOderAl(root);
+cout<<"\n\n";
+postOrderAl(root);
+/*
+A > <
+B <
+W > <
+N /
+Q > <
+L /
+M /
+C > <
+P > /
+Z <
+X /
+S /
+*/
 }

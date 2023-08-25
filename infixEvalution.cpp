@@ -54,9 +54,9 @@ int priority(char op){
     }
     else return 0;
 }
-int infixToPostfix(int str){
+string infixToPostfix(string str){
         stackx st;
-        int postfix="";
+        string postfix="";
         int i=0;
         while(str[i]!='\0'){
             if(str[i]>='a' && str[i]<='z' || str[i]>='A' && str[i]<='Z' || str[i]>='0' && str[i]<='9'){
@@ -110,7 +110,7 @@ double operation(int a,int b,char op){
     break;
  }
 }
-double evalPostfix(int str){
+double evalPostfix(string str){
      stackx st;
      int i=0;
      while(str[i]!='\0'){
@@ -136,7 +136,7 @@ double evalPostfix(int str){
       
 }
 int main(){
-    int st="a+b*(5/b)";
+    string st="a+b*(5/b)";
     cout<<"provide an infix notation:\n";
     cin>>st;
     cout<<evalPostfix(infixToPostfix(st));

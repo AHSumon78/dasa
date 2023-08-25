@@ -121,5 +121,5 @@ int main(){
    
    printMat(addMatrix(matA,r,c,matB,x,y),r,c);
    cout<<"\n\n";
-   printMat(multMatrix(matA,r,c,matB,x,y),r,c);
+   printMat(multMatrix(matA,r,c,matB,x,y),r,y);
 }
